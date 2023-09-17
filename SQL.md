@@ -15,6 +15,33 @@
 
 ###### **_Some datatypes name may change with respect to DBMS._**
 
+# Operators in SQL
+
+1. ## Comparision Operator
+
+   | Symbol |       Description        | Example |
+   | :----: | :----------------------: | ------- |
+   |   =    |         Equal to         | a=b     |
+   |   <>   |       Not Equal to       | a<>b    |
+   |   <    |        Less than         | a<b     |
+   |   >    |       Greater than       | a>b     |
+   |   >=   | Greater than or Equal to | a>=b    |
+   |   <=   |  Less than or Equal to   | a<=b    |
+
+2. ## Logical Operator
+   | Symbol  |                         Description                          |
+   | :-----: | :----------------------------------------------------------: |
+   |   ALL   |    TRUE if all of the subquery values meet the condition     |
+   |   AND   |     TRUE if all the conditions separated by AND is TRUE      |
+   |   ANY   |    TRUE if any of the subquery values meet the condition     |
+   | BETWEEN |    TRUE if the operand is within the range of comparisons    |
+   | EXISTS  |       TRUE if the subquery returns one or more records       |
+   |   IN    | TRUE if the operand is equal to one of a list of expressions |
+   |  LIKE   |            TRUE if the operand matches a pattern             |
+   |   NOT   |      Displays a record if the condition(s) is NOT TRUE       |
+   |   OR    |    TRUE if any of the conditions separated by OR is TRUE     |
+   |  SOME   |    TRUE if any of the subquery values meet the condition     |
+
 # Constraints
 
 - #### They are used to specify rules for the data in a table.
@@ -59,6 +86,43 @@
    - ##### Can also set intial value to start with by using _alter_.
      `alter table student_t0 AUTO_INCREMENT=inital_val;`
 
+# Clauses
+
+- #### Clauses are built-in functions that helps filter and analyze data in a database.
+
+1. #### HAVING :
+   - ##### HAVING clause can be used in a GROUP BY clause. It is used to specify a search condition for a group in the database tables.
+2. #### WHERE :
+
+   - ##### The WHERE clause in SQL is used to retrieve the specific data from the database that specifies the conditions exactly that are given in the UPDATE, DELETE, etc. statements.
+
+     `SELECT * FROM table_name WHERE condition`
+
+     `DELETE FROM table_name WHERE condition;`
+
+     `UPDATE table_name SET col_name = val WHERE condition`
+
+3. #### ORDER BY :
+
+   - ##### The ORDER BY clause in SQL is used for sorting the records of the database tables.
+   - ##### By default Ascending.
+
+     `SELECT * FROM table_name ORDER BY col_name ASC|DESC;`
+
+     `SELECT * FROM table_name ORDER BY col1_name ASC|DESC,col2_name ASC|DESC;`
+
+4. #### GROUP BY :
+
+   - ##### To group the result set of the rows that have the same values in the result set from the database tables, the GROUP BY clause is used.
+
+5. #### LIKE :
+
+   - ##### SQL LIKE clause compares a value to similar values using wildcard operators, i.e. per cent sign ( % ) and the underscore operator ( \_ ).
+
+6. #### LIMIT :
+
+   - ##### The LIMIT clause is used when you are dealing with large databases. It is used to specify the maximum number of rows to be retrieved from the table.
+
 # There are 5 Sub-Languages in SQL
 
 1. ## DQL - Data Query Language
@@ -76,6 +140,14 @@
      `SELECT Colummn1, Column2 FROM TABLENAME;`
 
      `SELECT Colummn1, Column2 FROM TABLENAME WHERE column_name condition;`
+
+  2. #### SELECT DISTINCT : Return only distinct rows according respective to queries.
+
+     `SELECT DISTINCT * FROM TABLENAME;`
+
+     `SELECT DISTINCT Colummn1, Column2 FROM TABLENAME;`
+
+     `SELECT DISTINCT Colummn1, Column2 FROM TABLENAME WHERE column_name condition;`
 
 2. ## DDL - Data Definition Language
 
@@ -109,9 +181,7 @@
 
   - `DESCRIBE table_name;` command can be used to retrieve info about table.
 
-3.  ## DCL - Data Control Language
-
-4.  ## DML - Data Manipulation Language
+3.  ## DML - Data Manipulation Language
 
 - ##### DML statements are used for performing queries on the data within database objects or rows in table.
 
@@ -119,15 +189,25 @@
 
 - ### Commands :
 
-  1. #### INSERT : Insert records into table.
+  1.  #### INSERT : Insert records into table.
 
-     `INSERT INTO VALUES (col1_val, col2_val);`
+      `INSERT INTO VALUES (col1_val, col2_val);`
 
-     `INSERT INTO (col1_name,col2_name) VALUES (col1_val, col2_val);`
+      `INSERT INTO (col1_name,col2_name) VALUES (col1_val, col2_val);`
 
-     `INSERT INTO VALUES (col1_val, col2_val), (col1_val2, col2_val2), (col1_val3, col2_val3);`
+      `INSERT INTO VALUES (col1_val, col2_val), (col1_val2, col2_val2), (col1_val3, col2_val3);`
 
-  2. #### UPDATE : Update records in table.
-  3. #### DELETE : Delete records from table.
+  2.  #### UPDATE : Update records in table.
 
+      `UPDATE table_name SET col_name = "new_val" WHERE condition;`
+
+      `UPDATE table_name SET col_name = CASE WHEN condition THEN new_val ELSE new_val1 END;`
+
+  3.  #### DELETE : Delete records from table.
+
+      `DELETE FROM table_name;`
+
+      `DELETE FROM table_name WHERE condition;`
+
+4.  ## DCL - Data Control Language
 5.  ## TCL - Transaction Control Language
