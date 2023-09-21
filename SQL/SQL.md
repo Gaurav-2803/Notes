@@ -203,6 +203,23 @@
 
       `SELECT col_name FROM table_name1 UNION ALL SELECT col_name FROM table_name2 ;`
 
+15. #### ON DELETE :
+
+    - ON DELETE constraint is used in MySQL to delete the rows from the child table automatically, when the rows from the parent table are deleted.
+
+    1. ON DELETE CASCADE :
+
+       - The ON DELETE CASCADE clause indicates that when the row in the parent table is deleted, the dependent rows in the child table will also be deleted.
+
+         `Foreign Key(t2_col) references t1(t1_col) ON DELETE SET NULL`
+
+    2. ON DELETE SET NULL :
+
+       - The ON DELETE SET NULL clause is a foreign key constraint that sets all records in a column to null if the corresponding record in the parent table is deleted.
+       - The child data is not deleted.
+
+         `Foreign Key(t2_col) references t1(t1_col) ON DELETE SET NULL`
+
 # There are 5 Sub- Languages in SQL
 
 1. ## DQL - Data Query Language
@@ -302,62 +319,145 @@
 
 - A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
 
-1. #### JOIN/INNER JOIN
+1.  #### JOIN/INNER JOIN
 
-   - This keyword will create the result- set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same.
+    - This keyword will create the result- set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 INNER JOIN table2 ON table1.matching_column = table2.matching_column;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         INNER JOIN table2 ON table1.matching_column = table2.matching_column;
+      ```
 
-2. #### LEFT JOIN/LEFT OUTER JOIN/LEFT INCLUSIVE JOIN
+2.  #### LEFT JOIN/LEFT OUTER JOIN/LEFT INCLUSIVE JOIN
 
-   - This join returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join.
+    - This join returns all the rows of the table on the left side of the join and matches rows for the table on the right side of the join.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 LEFT JOIN table2 ON table1.matching_column = table2.matching_column;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         LEFT JOIN table2 ON table1.matching_column = table2.matching_column;
+      ```
 
-3. #### LEFT EXCLUSIVE JOIN
+3.  #### LEFT EXCLUSIVE JOIN
 
-   - This join returns all the rows of the table on the left side of the join.
+    - This join returns all the rows of the table on the left side of the join.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 LEFT JOIN table2 ON table1.matching_column = table2.matching_column WHERE table2.matching_column IS NULL ;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         LEFT JOIN table2 ON table1.matching_column = table2.matching_column
+      WHERE
+         table2.matching_column IS NULL;
+      ```
 
-4. #### RIGHT JOIN/RIGHT OUTER JOIN/RIGHT INCLUSIVE JOIN
+4.  #### RIGHT JOIN/RIGHT OUTER JOIN/RIGHT INCLUSIVE JOIN
 
-   - This join returns all the rows of the table on the right side of the join and matches rows for the table on the left side of the join.
+    - This join returns all the rows of the table on the right side of the join and matches rows for the table on the left side of the join.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 RIGHT JOIN table2 ON table1.matching_column = table2.matching_column;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         RIGHT JOIN table2 ON table1.matching_column = table2.matching_column;
+      ```
 
-5. #### RIGHT EXCLUSIVE JOIN
+5.  #### RIGHT EXCLUSIVE JOIN
 
-   - This join returns all the rows of the table on the right side of the join.
+    - This join returns all the rows of the table on the right side of the join.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 LEFT JOIN table2 ON table1.matching_column = table2.matching_column WHERE table1.matching_column IS NULL ;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         LEFT JOIN table2 ON table1.matching_column = table2.matching_column
+      WHERE
+         table1.matching_column IS NULL;
+      ```
 
-6. #### OUTER JOIN/FULL OUTER JOIN/FULL JOIN/OUTER INCLUSIVE JOIN
+6.  #### OUTER JOIN/FULL OUTER JOIN/FULL JOIN/OUTER INCLUSIVE JOIN
 
-   - The result- set will contain all the rows from both tables.
+    - The result- set will contain all the rows from both tables.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 FULL JOIN table2 ON table1.matching_column = table2.matching_column;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1 FULL
+         JOIN table2 ON table1.matching_column = table2.matching_column;
+      ```
 
-7. #### OUTER EXCLUSIVE JOIN
+7.  #### OUTER EXCLUSIVE JOIN
 
-   - This join returns all the rows of the table on the right side and left side of the join exclusive of matching rows.
+    - This join returns all the rows of the table on the right side and left side of the join exclusive of matching rows.
 
-     `SELECT table1.column1,table1.column2,table2.column1 FROM table1 LEFT JOIN table2 ON table1.matching_column = table2.matching_column WHERE table1.matching_column IS NULL OR table2.matching_column IS NULL;`
+      ```
+      SELECT
+         table1.column1,
+         table1.column2,
+         table2.column1
+      FROM
+         table1
+         LEFT JOIN table2 ON table1.matching_column = table2.matching_column
+      WHERE
+         table1.matching_column IS NULL
+         OR table2.matching_column IS NULL;
+      ```
 
-8. #### SELF JOIN
+8.  #### SELF JOIN
 
-   - A self join in SQL is a type of inner join that joins a table to itself.
-   - In a self join, each row in a table is joined to itself and every other row in that table.
+    - A self join in SQL is a type of inner join that joins a table to itself.
+    - In a self join, each row in a table is joined to itself and every other row in that table.
 
-     `SELECT column_names FROM table1 T1, table1 T2 WHERE condition;`
+      ```
+      SELECT
+         column_names
+      FROM
+         table1 T1,
+         table1 T2
+      WHERE
+         condition;
+      ```
 
-9. #### CROSS JOIN
+9.  #### CROSS JOIN
 
-   - The CROSS JOIN is used to generate a paired combination of each row of the first table with each row of the second table.
+    - The CROSS JOIN is used to generate a paired combination of each row of the first table with each row of the second table.
 
-     `SELECT column_names FROM table1 CROSS JOIN table2;`
+      ```
+      SELECT
+         column_names
+      FROM
+         table1
+         CROSS JOIN table2;
+      ```
 
-     `SELECT column_names FROM table1, table2;`
+      ```
+      SELECT
+         column_names
+      FROM
+         table1,
+         table2;
+      ```
 
 10. #### NATURAL JOIN
 
@@ -365,4 +465,47 @@
     - The resulting table will contain all the attributes of both the table but keep only one copy of each common column while Inner Join joins two tables on the basis of the column which is explicitly specified in the ON clause.
     - The resulting table will contain all the attributes from both tables including the common column also.
 
-      `SELECT columns FROM table1 NATURAL JOIN table2;`
+      ```
+      SELECT
+         columns
+      FROM
+         table1
+         NATURAL JOIN table2;
+      ```
+
+# Nested Queries
+
+- Nested queries are a way to perform more complex queries by embedding one query within another.
+
+- A nested query is a query that appears inside another query, and it helps retrieve data from multiple tables or apply conditions based on the results of another query.
+
+```
+SELECT
+    t1_cols
+from
+    t1
+WHERE
+    condition IN (
+        SELECT
+            t2_cols
+        from
+            t2
+        WHERE
+            condition
+    )
+```
+
+# Triggers
+
+- A trigger is a stored procedure in a database that automatically invokes whenever a special event in the database occurs.
+
+```
+CREATE
+     TRIGGER `event_name` BEFORE/AFTER INSERT/UPDATE/DELETE
+     ON `database`.`table`
+     FOR EACH ROW BEGIN
+ 	    trigger body
+ 	    this code is applied to every
+ 	    inserted/updated/deleted row
+     END;
+```
