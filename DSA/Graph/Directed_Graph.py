@@ -1,11 +1,12 @@
-# from pprint import *
-# PrettyPrinter(width=20).pprint(self.graph)
+from pprint import *
 from queue import LifoQueue, SimpleQueue
+from graph import directed_graph
 
 
-class acyclic_graph:
-    def __init__(self, graph, start_node):
-        self.graph = graph
+class acyclic_graph(directed_graph):
+    def __init__(self, edges, start_node):
+        super().__init__(edges)
+        self.graph = super().create_graph()
         self.node = start_node
 
     def dfs_iterative(self):
@@ -25,7 +26,6 @@ class acyclic_graph:
             path.append(node)
 
             if node not in self.graph:
-                # leaf node, backtrack
                 return path
 
             for neighbour in self.graph.get(node):
@@ -45,24 +45,48 @@ class acyclic_graph:
             for next_node in self.graph.get(curr_node):
                 queue.put(next_node)
 
-    def bfs_recursive(self):
-        pass
+    def has_path_dfs(self, src, dest):
+        if src == dest:
+            return True
+        for neighbor in self.graph.get(src):
+            if self.has_path_dfs(neighbor, dest):
+                return True
+        return False
+
+    def has_path_bfs(self, src, dest):
+        queue = SimpleQueue()
+        queue.put(src)
+
+        while not queue.empty():
+            curr_node = queue.get()
+            if curr_node == dest:
+                return True
+            for next_node in self.graph.get(curr_node):
+                queue.put(next_node)
+        return False
 
 
-graph = {
-    "a": ["b", "c"],
-    "b": ["d"],
-    "c": ["e"],
-    "d": ["f"],
-}
+edges = [
+    ["a", "b"],
+    ["a", "c"],
+    ["b", "d"],
+    ["c", "e"],
+    ["d", "f"],
+]
 
-acgraph_obj = acyclic_graph(graph, "a")
+acgraph = acyclic_graph(edges, "a")
 
-print("DFS:")
-acgraph_obj.dfs_iterative()
-print("\n", acgraph_obj.dfs_recursive("a"))
+print("Graph: ")
+PrettyPrinter(width=20).pprint(acgraph.create_graph())
 
+print("\nDFS:")
+acgraph.dfs_iterative()
+print("\n", acgraph.dfs_recursive("a"))
 
 print("\nBFS:")
-acgraph_obj.bfs_iterative()
-# print("\n", acgraph_obj.bfs_recursive("a"))
+acgraph.bfs_iterative()
+
+src = input("\n\nSource node : ")
+dest = input("Destination node : ")
+print(f"\nHas path or not from {src} -> {dest}:", acgraph.has_path_dfs(src, dest))
+print(f"Has path or not from {src} -> {dest}:", acgraph.has_path_bfs(src, dest))
