@@ -1,5 +1,3 @@
-<!- - Reference : https://www.youtube.com/watch?v=HXV3zeQKqGY&t - - >
-
 # Most Common Data Types In SQL
 
 1. #### INT
