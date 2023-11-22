@@ -7,13 +7,13 @@
 3. #### VARCHAR (L)
    - String, of L max length.
 4. #### BLOB
-   - Binary Large Object or Multimedia files like Images, Audio, etc.
+   - Binary Large Objects or Multimedia files like Images, Audio, etc.
 5. #### DATE
    - Calendar Date, Format - > 'YYYY- MM- DD'.
 6. #### TIMESTAMP
    - Date with time, Format - > 'YYYY- MM- DD HH:MM:SS'.
 
-###### **_Some datatypes name may change with respect to DBMS._**
+###### **_Some datatypes names may change with respect to DBMS._**
 
 # Operators in SQL
 
@@ -32,7 +32,7 @@
    | Symbol  |                         Description                          |
    | :-----: | :----------------------------------------------------------: |
    |   ALL   |    TRUE if all of the subquery values meet the condition     |
-   |   AND   |     TRUE if all the conditions separated by AND is TRUE      |
+   |   AND   |     TRUE if all the conditions separated by AND are TRUE      |
    |   ANY   |    TRUE if any of the subquery values meet the condition     |
    | BETWEEN |    TRUE if the operand is within the range of comparisons    |
    | EXISTS  |       TRUE if the subquery returns one or more records       |
@@ -70,13 +70,13 @@
 4. #### FOREIGN KEY :
 
    - Prevents actions that would destroy links between tables
-   - Primary key for another table which is linked to table with primary key.
+   - Primary key for another table which is linked to the table with primary key.
 
      `FOREIGN KEY (new_table_col) REFERENCES Persons(first_table_primary_key)`
 
 5. #### CHECK :
 
-   - Ensures that the values in a column satisfies a specific condition
+   - Ensures that the values in a column satisfy a specific condition
 
      `check (condition)`
 
@@ -97,13 +97,13 @@
 8. #### AUTO_INCREMENT :
 
    - It allows a unique number to be generated automatically when a new record is inserted into a table.
-   - Can also set intial value to start with by using _alter_.
+   - Can also set initial value to start with by using _alter_.
 
      `alter table student_t0 AUTO_INCREMENT=inital_val;`
 
 # Clauses/Aggregate Queries
 
-- Clauses are built- in functions that helps filter and analyze data in a database.
+- Clauses are built-in functions that help filter and analyze data in a database.
 
 1. #### HAVING :
    - HAVING clause can be used in a GROUP BY clause. It is used to specify a search condition for a group in the database tables.
@@ -134,7 +134,7 @@
 
 5. #### LIKE :
 
-   - SQL LIKE clause compares a value to similar values using wildcard operators, i.e. per cent sign ( % ) and the underscore operator ( \_ ).
+   - SQL LIKE clause compares a value to similar values using wildcard operators, i.e. percent sign ( % ) and the underscore operator ( \_ ).
 
      `SELECT columns from table_name where column_name LIKE 'condition';`
 
@@ -155,37 +155,37 @@
 
 8. #### MAX :
 
-   - Find maximum value in column.
+   - Find the maximum value in a column.
 
      `SELECT MAX(col_name) FROM table_name;`
 
 9. #### MIN :
 
-   - Find minimum value in column.
+   - Find the minimum value in a column.
 
      `SELECT MIN(col_name) FROM table_name;`
 
 10. #### COUNT :
 
-    - Count total number of values in column.
+    - Count the total number of values in the column.
 
       `SELECT COUNT(col_name) FROM table_name;`
 
 11. #### SUM :
 
-    - Sum of all values in column.
+    - Sum of all values in the column.
 
       `SELECT SUM(col_name) FROM table_name;`
 
 12. #### AVG :
 
-    - Average of all values in column.
+    - Average of all values in the column.
 
       `SELECT AVG(col_name) FROM table_name;`
 
 13. #### DISTINCT :
 
-    - Return only distinct rows according respective to queries.
+    - Return only distinct rows according to respective queries.
 
       `SELECT DISTINCT * FROM TABLENAME;`
 
@@ -209,7 +209,7 @@
 
        - The ON DELETE CASCADE clause indicates that when the row in the parent table is deleted, the dependent rows in the child table will also be deleted.
 
-         `Foreign Key(t2_col) references t1(t1_col) ON DELETE SET NULL`
+         `Foreign Key(t2_col) references t1(t1_col) ON DELETE SET CASCADE`
 
     2. ON DELETE SET NULL :
 
@@ -222,7 +222,7 @@
 
 1. ## DQL - Data Query Language
 
-- DQL statements are used for performing queries on the data within schema objects.
+- DQL statements perform queries on the data within schema objects.
 
 - The purpose of the DQL Command is to get some schema relation based on the query passed to it.
 
@@ -230,7 +230,7 @@
 
 1. #### SELECT :
 
-   - Return rows according respective to queries.
+   - Return rows according to respective queries.
 
      `SELECT * FROM TABLENAME;`
 
@@ -248,7 +248,7 @@
 
 1.  #### CREATE :
 
-    - This will create table in database with respective Columns names and its attributes.
+    - This will create a table in the database with respective column names and attributes.
 
       `CREATE TABLE table_name (col1_name datatype key(optional));`
 
@@ -256,13 +256,13 @@
 
 2.  #### DROP :
 
-    - Delete the entire structure or schema and _Rollback_ is not possible. Slower than both _Truncate_ & _Delete_.
+    - Delete the entire structure or schema and _Rollback_ is impossible. Slower than both _Truncate_ & _Delete_.
 
       `DROP TABLE table_name;`
 
 3.  #### ALTER :
 
-    - Updates the tables attributes or stucture.
+    - Updates the table's attributes or structure.
 
       `alter table table_name add column_name datatype;`
 
@@ -274,19 +274,19 @@
 
 6.  #### RENAME :
 
-- `DESCRIBE table_name;` command can be used to retrieve info about table.
+- `DESCRIBE table_name;` command can be used to retrieve info about the table.
 
 3.  ## DML - Data Manipulation Language
 
-- DML statements are used for performing queries on the data within database objects or rows in table.
+- DML statements perform queries on the data within database objects or rows in the table.
 
-- The purpose of the DML Command is to perform operation on table records like insert, update and delete.
+- The purpose of the DML Command is to perform operations on table records like insert, update, and delete.
 
 - Commands :
 
 1.  #### INSERT :
 
-    - Insert records into table.
+    - Insert records into the table.
 
       `INSERT INTO VALUES (col1_val, col2_val);`
 
@@ -296,7 +296,7 @@
 
 2.  #### UPDATE :
 
-    - Update records in table.
+    - Update records in the table.
 
       `UPDATE table_name SET col_name = "new_val" WHERE condition;`
 
@@ -304,7 +304,7 @@
 
 3.  #### DELETE :
 
-    - Delete records from table.
+    - Delete records from the table.
 
       `DELETE FROM table_name;`
 
@@ -319,7 +319,7 @@
 
 1.  #### JOIN/INNER JOIN
 
-    - This keyword will create the result- set by combining all rows from both the tables where the condition satisfies i.e value of the common field will be the same.
+    - This keyword will create the result- set by combining all rows from both the tables where the condition satisfies i.e. the value of the common field will be the same.
 
       ```
       SELECT
@@ -424,8 +424,8 @@
 
 8.  #### SELF JOIN
 
-    - A self join in SQL is a type of inner join that joins a table to itself.
-    - In a self join, each row in a table is joined to itself and every other row in that table.
+    - A self-join in SQL is a type of inner join that joins a table to itself.
+    - In a self-join, each row in a table is joined to itself and every other row in that table.
 
       ```
       SELECT
